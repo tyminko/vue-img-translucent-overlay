@@ -1,10 +1,20 @@
 {
   "name": "vue-img-translucent-overlay",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "description": "Vue component for client side high quality image resizing, exif-based auto rotation and upload with integrated optional support of firebase storage.",
+  "main": "dist/vue-img-translucent-overlay.umd.js",
+  "module": "dist/vue-img-translucent-overlay.esm.js",
+  "unpkg": "dist/vue-img-translucent-overlay.min.js",
+  "browser": {
+    "./sfc": "src/ImgFineResizeUploader.vue"
+  },
   "scripts": {
+    "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
+    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/expandable-text-line.umd.js",
+    "build:es": "rollup --config build/rollup.config.js --format es --file dist/expandable-text-line.esm.js",
+    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/expandable-text-line.min.js",
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -19,6 +29,10 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "rollup": "^1.26.5",
+    "rollup-plugin-buble": "^0.19.8",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-vue": "^5.1.2",
     "sass": "^1.19.0",
     "sass-loader": "^8.0.0",
     "vue-template-compiler": "^2.6.10"
